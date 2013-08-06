@@ -25,6 +25,7 @@
 		$attention = $_REQUEST['1_3'] ;
 		$date = date('jS F Y') ;
 		$price = '<b>' . $_REQUEST['1_4'] . '</b>' ;
+		$pageBreak = '<DIV style="page-break-after:always"></DIV>' ;
 		
 		##MACHINE SPEC!!
 		
@@ -63,7 +64,7 @@
 		$maxMachinceSpeed = $_REQUEST['3_33'];
 		$rewindTensionRange = $_REQUEST['3_34'];
 		$laser = $_REQUEST['3_35'];
-		$unloading = $_REQUEST['3_36'];
+		$unLoading = $_REQUEST['3_36'];
 		$rewindCoreMaterial = $_REQUEST['3_37'];
 		$rewindCoreSize = $_REQUEST['3_38'];
 		
@@ -1414,10 +1415,10 @@
 
 
 
-</table>	
-		<hr id="top"/>
+</table>	' . $pageBreak . '
+		<hr/>
 		
-				<h2>Quotation Contents</h2>
+				<h2 id="top">Quotation Contents</h2>
 	
 		<p>
 	
@@ -1488,7 +1489,7 @@
 		</ul>
 			
 		</p>
-		
+		' . $pageBreak . '
 		<hr id="1"/><div>
 		<h2>1. Introduction</h2>
 				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
@@ -1516,7 +1517,12 @@
 	</div><br/>
 		<img src="images/1_intro/diagram.jpeg" alt="Universal" id="universal_image" />
 				
-				<hr id="2"/><div>
+				<hr id="2"/>
+				
+				' . $pageBreak . '
+				
+				<div>
+				
 		<h2>2. Universal X6 Slitter Rewinder</h2>
 				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 		
@@ -1539,14 +1545,14 @@
 		<p id="withoutimage"><b>Extensive recipe system</b><br/>Combined with the closed loop tension control system, our recipe system guarantees product repeatability.</p>
 		<p id="withoutimage"><b>Worldwide support</b><br/>Same day support is available by telephone, and additionally Internet support is available.  Service engineers are normally available within 48 hours.<br/>Additional support (drive system) can be obtained from Control Techniques LLC, a full list of worldwide service locations can be found at <a href="http://www.universalconvertingequipment.com/ct">www.universalconvertingequipment.com/ct</a>
 </p>
-		<p id="withoutimage"><b>UK Design and Build</b><br/>The X6 is designed and built in the UK.</p>
-		<p id="withimage"><b>Minimised energy usage - ideas for efficient converting</b><br/>All of our machines are designed to use a minimal amount of energy and as a part of our sustainability program we have identified significant areas of energy wastage on winding machines.  We use the latest high efficiency AC motors combined with the most up to date AC Vector Drives.  A motor is used on the unwind rather than a brake - the motor generates electricity which is used to power the rewind motor rather than converting brake energy into heat.  The net result is an extremely energy efficient machine.</p>
+		<p id="withoutimage"><b>UK Design and Build</b><br/>The X6 is designed and built in the UK.</p></div> ' . $pageBreak . '
+		<div><p id="withimage"><b>Minimised energy usage - ideas for efficient converting</b><br/>All of our machines are designed to use a minimal amount of energy and as a part of our sustainability program we have identified significant areas of energy wastage on winding machines.  We use the latest high efficiency AC motors combined with the most up to date AC Vector Drives.  A motor is used on the unwind rather than a brake - the motor generates electricity which is used to power the rewind motor rather than converting brake energy into heat.  The net result is an extremely energy efficient machine.</p>
 
 		<img src="images/2_x6/x6energy.jpeg" alt="Minimized Energy Usage" id="x6energy_image" />
 
 	</div><br/>' ; 
 	
-			$machineQuote = '		<hr id="3" /><div>
+			$machineQuote = $pageBreak . '		<hr id="3" /><div>
 		<h2>3. Your Machine Specification</h2>
 				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 		
@@ -1606,7 +1612,7 @@
 				<li>Maximum Machine Speed: ' . $maxMachinceSpeed . '</li>
 				<li>Tension Range: ' . $rewindTensionRange . '</li>
 				<li>Laser Core Alignment: ' . $laser . '</li>
-				<li>Unloading: ' . $unloading . '</li>
+				<li>Unloading: ' . $unLoading . '</li>
 				<li>Core Material: ' . $rewindCoreMaterial . '</li>
 				<li>Core Size: ' . $rewindCoreSize . '</li>
 			
@@ -1621,17 +1627,17 @@
 	
 	
 			
-			$sectionFour = $fourStandard . $unwind . $shafted . $chucks . $arms . $motor . $driven . $safety . $controls . $guiding . $splice . $trash ;
+			$sectionFour = $pageBreak . $fourStandard . $unwind . $shafted . $chucks . $arms . $motor . $driven . $safety . $controls . $guiding . $splice . $trash ;
 			
-			$sectionFive = $fiveStandard . $main . $bowed ;
+			$sectionFive = $pageBreak . $fiveStandard . $main . $bowed ;
 			
-			$sectionSix = $sixStandard . $shear . $auto . $razor . $trimwinder . $trimblower . $tension ;
+			$sectionSix = $pageBreak . $sixStandard . $shear . $auto . $razor . $trimwinder . $trimblower . $tension ;
 			
-			$sectionSeven = $sevenStandard . $duplex . $winding . $computacore . $layon . $tensionconrol . $lengthcounter . $static . $unloading . $pusher . $robot . $camera ;
+			$sectionSeven = $pageBreak . $sevenStandard . $duplex . $winding . $computacore . $layon . $tensionconrol . $lengthcounter . $static . $unloading . $pusher . $robot . $camera ;
 			
-			$sectionEight = $eightStandard . $operatorControls . $remoteDiagnostics . $driveMotors . $driveType . $machineGuarding ;
+			$sectionEight = $pageBreak . $eightStandard . $operatorControls . $remoteDiagnostics . $driveMotors . $driveType . $machineGuarding ;
 			
-			$sectionNine = '<hr id="9"/><div>
+			$sectionNine = $pageBreak . '<hr id="9"/><div>
 		<h2>9. Your Machine Quotation</h2>	
 				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 	
@@ -1648,7 +1654,7 @@
 		</div>	
 ' ;
 
-			$sectionTen = '		<hr id="10"/>
+			$sectionTen =  $pageBreak . '		<hr id="10"/>
 		
 		<div>
 			
@@ -1720,7 +1726,7 @@ Terms are available at <a href="http://www.universalconvertingequipment.com/term
 		</div>	
 ' ;
 
-				$sectionEleven = '		<hr id="11"/>
+				$sectionEleven = $pageBreak . '		<hr id="11"/>
 		
 		<div>
 			

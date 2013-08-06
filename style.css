@@ -228,7 +228,11 @@
 		width: 28%;
 		clear: both;
 		float: right;
-		margin-top: -250px;
+		margin-top: -199px;
+		page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+		page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+		page-break-inside: avoid; /* or 'auto' */
+
 	}
 
 	#x6_image {
@@ -499,5 +503,17 @@
 		margin-left: auto;
 		width: 95%;
 	}
+	img {
+page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+page-break-inside: avoid; /* or 'auto' */
+}
 
-	
+	@media print
+	{
+	div {page-break-inside: avoid;}
+img {
+page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+page-break-inside: avoid; /* or 'auto' */
+}	}
