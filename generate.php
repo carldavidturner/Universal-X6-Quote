@@ -2,14 +2,16 @@
 <html>
 
 	<head>
+		<?php 		$quoteNumber = $_REQUEST['1_1'] ;		$company = $_REQUEST['1_2'] ;
 
+?>
 		<!-- css -->
 		<link rel="stylesheet" type="text/css" href="style.css">
 		
 		<meta charset="UTF-8">
 
 		<!-- title -->
-		<title>Your Quote | Universal Converting Equipment</title>
+		<title><?php echo($quoteNumber) ; ?> - Universal X6 - <?php echo($company) ; ?></title>
 		
 	</head>
 	
@@ -20,8 +22,6 @@
 		
 		#GENERAL INFO!!
 		
-		$quoteNumber = $_REQUEST['1_1'] ;
-		$company = $_REQUEST['1_2'] ;
 		$attention = $_REQUEST['1_3'] ;
 		$date = date('jS F Y') ;
 		$price = '<b>' . $_REQUEST['1_4'] . '</b>' ;
@@ -73,7 +73,6 @@
 		
 			$fourStandard = '<hr id="4"/><div>
 		<h2>4. Unwind Details</h2>
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 		
 	</div> <br/>' ;
 
@@ -239,7 +238,6 @@
 		
 			$fiveStandard = '<hr id="5"/><div>
 		<h2>5. Main Drive Details</h2>	
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 	
 	</div> <br/>' ;
 	
@@ -270,7 +268,6 @@
 		
 			$sixStandard = '<hr id="6"/><div>
 		<h2>6. Slitting</h2>
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 
 		<p id="withoutimage">Several options are available for slitting.</p>
 		<ul id="list">
@@ -362,7 +359,6 @@
 		
 			$sevenStandard = '				<hr id="7"/><div>
 		<h2>7. Rewind Section Details</h2>	
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 	
 	</div> <br/>
 ' ;
@@ -499,7 +495,6 @@
 		
 			$eightStandard = '					<hr id="8"/><div>
 		<h2>8. Drives and Controls</h2>	
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 
 		<p>All drives and controls are integral, but can be supplied in a separate control unit if required.</p>	
 	</div> <br/>
@@ -1418,7 +1413,7 @@
 </table>	' . $pageBreak . '
 		<hr/>
 		
-				<h2 id="top">Quotation Contents</h2>
+				<h2>Quotation Contents</h2>
 	
 		<p>
 	
@@ -1492,7 +1487,6 @@
 		' . $pageBreak . '
 		<hr id="1"/><div>
 		<h2>1. Introduction</h2>
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 		
 	<br/>
 		<p id="withoutimage">Over 600 installations around the world over the last 17 years.
@@ -1524,7 +1518,6 @@
 				<div>
 				
 		<h2>2. Universal X6 Slitter Rewinder</h2>
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 		
 	<br/>
 		<p id="withimage">The Universal X6 slitting machine has been designed to produce perfect slit rolls time and time again. This versatile machine incorporates Universal’s closed loop Total Tension Control System ensuring consistent and repeatable roll tension profiles. Using digital AC vector drives and integrated control system, the machine offers unprecedented control whilst being simple and friendly to operate. 
@@ -1554,7 +1547,6 @@
 	
 			$machineQuote = $pageBreak . '		<hr id="3" /><div>
 		<h2>3. Your Machine Specification</h2>
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 		
 	<br/>
 		<p>
@@ -1639,7 +1631,6 @@
 			
 			$sectionNine = $pageBreak . '<hr id="9"/><div>
 		<h2>9. Your Machine Quotation</h2>	
-				<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 	
 	</div> <br/>
 		<div>		
@@ -1659,7 +1650,6 @@
 		<div>
 			
 			<h2 id="tandctitle">10. Terms and Conditions</h2>		
-			<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 
 		</div> 
 		
@@ -1731,7 +1721,6 @@ Terms are available at <a href="http://www.universalconvertingequipment.com/term
 		<div>
 			
 			<h2>11. Installation</h2>		
-			<p><a href="#top" id="backtotop">Back to the Top</a></p>		
 
 		</div> 
 		
