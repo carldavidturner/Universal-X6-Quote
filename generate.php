@@ -93,7 +93,7 @@
 	</div><br/>' ;
 	
 	
-			$unwindPrice = '<p class="price">£9,999</p>' ;
+			$unwindPrice = '<p class="price">' . $_REQUEST['4_1_pirce'] . '</p>' ;
 
 			$shaftedYes = '<div>
 		<h4 id="6_2_title">Shafted unwind</h4>
@@ -103,7 +103,7 @@
 	</div><br/>' ;
 	
 	
-			$shaftedPrice = '<p class="price">£9,999</p>' ;
+			$shaftedPrice = '<p class="price">' . $_REQUEST['4_2_pirce'] . '</p>' ;
 
 			$chucksYes = '<div>
 		<h4 id="6_2_title">Unwind chucks</h4>
@@ -113,7 +113,7 @@
 	</div><br/>' ;
 	
 	
-			$chucksPrice = '<p class="price">£9,999</p>' ;
+			$chucksPrice = '<p class="price">' . $_REQUEST['4_3_pirce'] . '</p>' ;
 
 			$armsYes = '<div>
 		<h4 id="6_2_title">Unwind arms</h4>
@@ -123,7 +123,7 @@
 	</div><br/>' ;
 	
 	
-			$armsPrice = '<p class="price">£9,999</p>' ;
+			$armsPrice = '<p class="price">' . $_REQUEST['4_4_pirce'] . '</p>' ;
 
 			$motorsYes = '<div>
 		<h4 id="6_2_title">Unwind motors</h4>
@@ -134,7 +134,7 @@
 	</div><br/>' ;
 	
 	
-			$motorsPrice = '<p class="price">£9,999</p>' ;
+			$motorsPrice = '<p class="price">' . $_REQUEST['4_5_pirce'] . '</p>' ;
 
 			$drivenYes = '<div>
 		<h4 id="6_2_title">Driven unwind</h4>
@@ -144,7 +144,7 @@
 	</div><br/>' ;
 	
 	
-			$drivenPrice = '<p class="price">£9,999</p>' ;
+			$drivenPrice = '<p class="price">' . $_REQUEST['4_6_pirce'] . '</p>' ;
 
 			$safetyYes = '<div>
 		<h4 id="6_2_title">Unwind safety</h4>
@@ -154,7 +154,7 @@
 	</div><br/>' ;
 	
 	
-			$safetyPrice = '<p class="price">£9,999</p>' ;
+			$safetyPrice = '<p class="price">' . $_REQUEST['4_7_pirce'] . '</p>' ;
 
 			$controlsYes = '<div>
 		<h4 id="6_2_title">Unwind section operator controls</h4>
@@ -183,7 +183,7 @@
 	</div><br/>' ;
 	
 	
-			$controlsPrice = '<p class="price">£9,999</p>' ;
+			$controlsPrice = '<p class="price">' . $_REQUEST['4_8_pirce'] . '</p>' ;
 
 			$guidingYes = '<div>
 		<h4 id="6_2_title">Guiding</h4>
@@ -206,7 +206,7 @@
 	</div><br/>' ;
 	
 	
-			$guidingPrice = '<p class="price">£9,999</p>' ;
+			$guidingPrice = '<p class="price">' . $_REQUEST['4_9_pirce'] . '</p>' ;
 
 			$spliceYes = '<div>
 		<h4 id="6_2_title">Splice Table</h4>
@@ -219,7 +219,7 @@
 ' ;
 	
 	
-			$splicePrice = '<p class="price">£9,999</p>' ;
+			$splicePrice = '<p class="price">' . $_REQUEST['4_10_pirce'] . '</p>' ;
 
 			$trashYes = '<div>
 		<h4 id="6_2_title">Trash Winder</h4>
@@ -230,7 +230,7 @@
 	</div><br/>' ;
 	
 	
-			$trashPrice = '<p class="price">£9,999</p>' ;
+			$trashPrice = '<p class="price">' . $_REQUEST['4_11_pirce'] . '</p>' ;
 
 
 
