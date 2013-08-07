@@ -559,6 +559,16 @@
 
 		
 			$null = '' ;
+			
+			
+			if(($_POST['1_5']) == 'United Kingdom or Europe')
+				{
+				$powerRequirements = '<li>380-420V 3 phase (No Neutral), 50Hz ±10%</li>' ;
+				}
+			else
+				{
+				$powerRequirements = '<li>440-480V 3 phase (No Neutral), 60Hz ±10%</li>' ;
+				}	
 		
 		##SECTION FOUR IF STATEMENTS
 		
@@ -1736,8 +1746,7 @@ Terms are available at <a href="http://www.universalconvertingequipment.com/term
 			
 				<ul id="list">
 				
-					<li>380-420V 3 phase (No Neutral), 50Hz ±10%</li>
-					<li>440-480V 3 phase (No Neutral), 60Hz ±10%</li>
+					' . $powerRequirements . '			
 					<li>40 KVA @ 63 Amps</li>
 				
 				</ul>
