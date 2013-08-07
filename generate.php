@@ -7,6 +7,7 @@
 ?>
 		<!-- css -->
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" media="print" href="print.css">
 		
 		<meta charset="UTF-8">
 
@@ -169,7 +170,7 @@
 		<li>Unwinder direction</li>
 		<li>Unwind diameter setpoint</li></ul>
 		<br/>
-		<b>Indicatons</b>
+		<span class="block"><b>Indications</b></span>
 		<br/>
 		<ul id="list">
 		<li>Speed indicator</li>
@@ -523,7 +524,7 @@
 			$remoteDiagnosticsPrice = '<p class="price">£9,999</p>' ;
 
 
-			$drivemMotorsYes = '	<div>
+			$driveMotorsYes = '	<div>
 		<h4 id="6_2_title">Drive Motors</h4>
 		<p id="withoutimage">AC Vector Motors with closed loop feedback. A fail safe disc brake is included for fast emergency stopping and holding the shaft stationary during roll changes.</p>
 
@@ -1623,7 +1624,7 @@
 			
 			$sectionFive = $pageBreak . $fiveStandard . $main . $bowed ;
 			
-			$sectionSix = $pageBreak . $sixStandard . $shear . $auto . $razor . $trimwinder . $trimblower . $tension ;
+			$sectionSix = $sixStandard . $shear . $auto . $razor . $trimwinder . $trimblower . $tension ;
 			
 			$sectionSeven = $pageBreak . $sevenStandard . $duplex . $winding . $computacore . $layon . $tensionconrol . $lengthcounter . $static . $unloading . $pusher . $robot . $camera ;
 			
@@ -1641,7 +1642,7 @@
 		<div>
 		
 			<h3>Options</h3>
-		' . $unwindoption . $shaftedoption . $chucksoption . $armsoption . $motoroption . $drivenoption . $safetyoption . $controlsoption . $guidingoption . $spliceoption . $trashoption . $mainoption . $bowedoption . $shearoption . $autooption . $razoroption . $trimwinderoption . $trimbloweroption . $tensionoption . $duplexoption . $windingoption . $computacoreoption . $layonoption . $tensionconroloption . $lengthcounteroption . $staticoption . $unloadingoption . $pusheroption . $robotoption . $cameraoption . $operatorcontrolsoption . $remotediagnosticsoption . $drivemotorsoption . $drivetypeoption . $machineguardingoption . '
+		' . $unwindOption . $shaftedOption . $chucksOption . $armsOption . $motorOption . $drivenOption . $safetyOption . $controlsOption . $guidingOption . $spliceOption . $trashOption . $mainOption . $bowedOption . $shearOption . $autoOption . $razorOption . $trimWinderOption . $trimBlowerOption . $tensionOption . $duplexOption . $windingOption . $computacoreOption . $layonOption . $tensionConrolOption . $lengthCounterOption . $staticOption . $unloadingOption . $pusherOption . $robotOption . $cameraOption . $operatorControlsOption . $remoteDiagnosticsOption . $driveMotorsOption . $driveTypeOption . $machineGuardingOption . '
 		</div>	
 ' ;
 
