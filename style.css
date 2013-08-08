@@ -1,4 +1,5 @@
 	input {
+		width: 200px;
 		margin-right: 3px;
 		margin-top: 5px;
 		padding-right: 3px;
@@ -313,12 +314,18 @@
 	}
 
 	.radio1 {
+		width: 20px;
 		padding-right: 5px;
 		padding-left: 5px;
 		text-align: left;
 	}
 
 	td {
+		border-collapse: collapse;
+		border-color: black;
+		border-style: solid;
+		border-width: 1px;
+		width: 125px;
 		padding-top: 2px;
 		text-align: center;
 	}
@@ -329,6 +336,10 @@
 	}
 
 	th {
+		border-collapse: collapse;
+		border-width: 1px;
+		border-color: black;
+		border-style: solid;
 		padding-bottom: 5px;
 		padding-top: 5px;
 		margin-bottom: 5px;
@@ -508,4 +519,15 @@
 		page-break-inside: avoid !important;
 		page-break-after: auto;
 		page-break-before: auto;
+	}
+
+	select {
+		width: 207px;
+	}
+
+	table {
+		border-collapse: collapse;
+		border-width: 1px;
+		border-color: black;
+		border-style: solid;
 	}

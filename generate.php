@@ -2,7 +2,7 @@
 <html>
 
 	<head>
-		<?php 		$quoteNumber = $_REQUEST['1_1'] ;		$company = $_REQUEST['1_2'] ;
+		<?php 		$quoteNumber = $_REQUEST['quoteNumber'] ;		$company = $_REQUEST['companyName'] ;
 
 ?>
 		<!-- css -->
@@ -23,51 +23,83 @@
 		
 		#GENERAL INFO!!
 		
-		$attention = $_REQUEST['1_3'] ;
+		$attention = $_REQUEST['attentionOf'] ;
+		$location = $_REQUEST['companyCountry'] ;
 		$date = date('jS F Y') ;
-		$price = '<b>' . $_REQUEST['1_4'] . '</b>' ;
+		$price = '<b>' . $_REQUEST['finalPrice'] . '</b>' ;
 		$pageBreak = '<DIV style="page-break-after:always"></DIV>' ;
+		$region = $_REQUEST['region'] ;
+		$null = '' ;
+
 		
 		##MACHINE SPEC!!
 		
-		$unwindType1 = $_REQUEST['3_1'];
-		$unwindType2 = $_REQUEST['3_2'];
-		$unwindType3 = $_REQUEST['3_3'];
-		$unwindMaxRollWid = $_REQUEST['3_4'];
-		$unwindMaxRollDia = $_REQUEST['3_5'];
-		$unwindMinWebWid = $_REQUEST['3_6'];
-		$unwindMinRollDia = $_REQUEST['3_7'];
-		$maxRollWeight = $_REQUEST['3_8'];
-		$unwindRollMaterial = $_REQUEST['3_9'];
-		$unwindMaterialThick = $_REQUEST['3_10'];
-		$webGuiding = $_REQUEST['3_11'];
-		$peeler = $_REQUEST['3_12'];
-		$unwindTensionRange = $_REQUEST['3_13'];
-		$cameraSystem = $_REQUEST['3_14'];
-		$unwindCoreMaterial = $_REQUEST['3_15'];
-		$unwindCoreSize = $_REQUEST['3_16'];
-		$slittingType = $_REQUEST['3_17'];
-		$knivesIncl = $_REQUEST['3_18'];
-		$anvilsIncl = $_REQUEST['3_19'];
-		$razorHoldersIncl = $_REQUEST['3_20'];
-		$minSlitWidth = $_REQUEST['3_21'];
-		$spliceTable = $_REQUEST['3_22'];
-		$autoKnife = $_REQUEST['3_23'];
-		$trimRemoval = $_REQUEST['3_24'];
-		$rewindMaxRollDia = $_REQUEST['3_25'];
-		$rewindMaxRollWeight = $_REQUEST['3_26'];
-		$turretting = $_REQUEST['3_27'];
-		$layonRollers = $_REQUEST['3_28'];
-		$differShafts = $_REQUEST['3_29'];
-		$bowedRoller = $_REQUEST['3_30'];
-		$spreaderRoller = $_REQUEST['3_31'];
-		$antiStatic = $_REQUEST['3_32'];
-		$maxMachinceSpeed = $_REQUEST['3_33'];
-		$rewindTensionRange = $_REQUEST['3_34'];
-		$laser = $_REQUEST['3_35'];
-		$unLoading = $_REQUEST['3_36'];
-		$rewindCoreMaterial = $_REQUEST['3_37'];
-		$rewindCoreSize = $_REQUEST['3_38'];
+		$unwindType1 = $_REQUEST['shaftedShaftless'];
+		$unwindType2 = $_REQUEST['seperateIntegral'];
+		$unwindType3 = $_REQUEST['drivenBraked'];
+		$unwindMaxRollWid = $_REQUEST['maxUnloadRollWidth'];
+		$unwindMaxRollDia = $_REQUEST['maxUnwindRollDia'];
+		$unwindMinWebWid = $_REQUEST['minUnwindWebWidth'];
+		$unwindMinRollDia = $_REQUEST['minDiaFloorPickup'];
+		$maxRollWeight = $_REQUEST['maxUnwindRollWeight'];
+		$unwindRollMaterial = $_REQUEST['rollMaterial'];
+		$unwindMaterialThick = $_REQUEST['materialThickness'];
+		$webGuiding = $_REQUEST['webGuiding'];
+		$peeler = $_REQUEST['peelOff'];
+		$unwindTensionRange = $_REQUEST['unwindTensionRange'];
+		$cameraSystem = $_REQUEST['cameras'];
+		$unwindCoreMaterial = $_REQUEST['unwindCoreMaterial'];
+		$unwindCoreSize = $_REQUEST['unwindCoreSize'];
+		$spliceTable = $_REQUEST['spliceTable'];
+
+		
+		if(($_REQUEST['shearYes']) == 'Shear')
+			{
+			$slittingType = 'Shear' ;
+			$knivesIncl = '<li>Knives Included: ' . $_REQUEST['shearKnives'] . '</li>';
+			$anvilsIncl = '<li>Shear Anvils Included: ' . $_REQUEST['shearAnvils'] . '</li>' ;
+			$razorsIncl = $null ;
+			$crushKnives = $null ;
+			}
+		elseif(($_REQUEST['razorYes']) == 'Razor')
+			{
+			$slittingType = 'Razor' ;			
+			$knivesIncl = $null ;
+			$anvilsIncl = $null ;
+			$razorsIncl = '<li>Razors Included: ' . $_REQUEST['razorKnives'] . '</li>' ;
+			$crushKnives = $null ;
+			}	
+		elseif(($_REQUEST['crushYes']) == 'Crush')
+			{
+			$slittingType = 'Crush' ;
+			$knivesIncl = $null ;
+			$anvilsIncl = $null ;
+			$razorsIncl = $null ;
+			$crushKnives = '<li>Crush Cut Knives Included: ' . $_REQUEST['crushKnives'] . '</li>' ;
+			}
+		else
+			{
+			die("An error occured.") ;
+			}	
+		
+		$minSlitWidth = $_REQUEST['minSlitWidth'];
+		$autoKnife = $_REQUEST['akp'];
+		$trimRemoval = $_REQUEST['trim'];
+		$spreaderRoller = $_REQUEST['spreaderRoller'];		
+		
+		$rewindType = $_REQUEST['rewindType'];
+		$shaftType = $_REQUEST['shaftType'];
+		$computacore = $_REQUEST['computacore'];
+		$rewindMaxRollDia = $_REQUEST['maxRewindRollDia'];
+		$rewindMaxRollWeight = $_REQUEST['maxRewindRollWeight'];
+		$layonRollers = $_REQUEST['layonRollers'];
+		$antiStatic = $_REQUEST['antiStatic'];
+		$maxMachinceSpeed = $_REQUEST['maxMachineSpeed'];
+		$rewindTensionRange = $_REQUEST['rewindTensionRange'];
+		$onwardHandling = $_REQUEST['onwards'];
+		$rewindCoreMaterial = $_REQUEST['rewindCoreMaterial'];
+		$rewindCoreSize = $_REQUEST['rewindCoreSize'];
+		$offloadPusher = $_REQUEST['offloadPusher'];
 		
 		
 		##SECTION FOUR!!
@@ -75,9 +107,9 @@
 			$fourStandard = '<hr id="4"/><div>
 		<h2>4. Unwind Details</h2>
 		
-	</div> <br/>' ;
-
-			$unwindYes = '<div>
+	</div> <br/>
+	
+	<div>
 		<h4 id="empty_title">Unwind</h4>
 		<p id="withimage">The X6 is available with either a separate (X6s) or integral (X6i) unwind.
 		
@@ -93,7 +125,15 @@
 	</div><br/>' ;
 	
 	
-			$unwindPrice = '<p class="price">' . $_REQUEST['4_1_pirce'] . '</p>' ;
+	if($unwindType1 == 'Shafted')
+		{
+		$unwindResponse = '' ;
+		}
+	else
+		{
+		$unwindResponse = '' ;
+		}	
+
 
 			$shaftedYes = '<div>
 		<h4 id="6_2_title">Shafted unwind</h4>
@@ -558,7 +598,6 @@
 
 
 		
-			$null = '' ;
 			
 			
 			if(($_POST['1_5']) == 'United Kingdom or Europe')
@@ -1390,7 +1429,7 @@
 	<tr id="infotr">
 	
 		<th id="infoth">Company</th>
-		<td id="infotd"><span id="bigger">' . $company . '</span></td>
+		<td id="infotd"><span id="bigger">' . $company . ', ' . $companyCountry . '</span></td>
 	
 	</tr>
 
@@ -1589,10 +1628,8 @@
 			
 			<ul id="list">
 			
-				<li>Slitting Type: ' . $slittingType . '</li>
-				<li>Knives/Razors Included: ' . $knivesIncl . '</li>
-				<li>Shear Anvils Included: ' . $anvilsIncl . '</li>
-				<li>Razor Holders Included: ' . $razorHoldersIncl . '</li>
+				<li>Slitting Type: ' . $slittingType . '</li>'
+				 . $knivesIncl . $anvilsIncl . $razorsIncl . $crushKnives . '
 				<li>Minimum Slit Width: ' . $minSlitWidth . '</li>
 				<li>Splice Table: ' . $spliceTable . '</li>
 				<li>Automatic Knife Positioning: ' . $autoKnife . '</li>
