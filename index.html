@@ -66,6 +66,13 @@
 					<td><input type="text" class="text" name="finalPrice" /></td>
 	
 				</tr>
+				
+				<tr>
+				
+					<td class="desc">Additional Text for Price</td>
+					<td><textarea name="priceAdditionalInfo"></textarea></td>
+				
+				</tr>
 
 				<tr>
 				
@@ -112,7 +119,7 @@
 					
 						<select name="seperateIntegral">
 						
-						<option value="Seperate">Seperate</option>
+						<option value="Separate">Separate</option>
 						<option value="Integral">Integral</option>
 
 						
@@ -183,7 +190,7 @@
 				<tr>
 				
 					<td class="desc">Web Guiding:</td>
-					<td class="selection"><select name="webGuiding"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select></td>
+					<td class="selection"><select name="webGuiding"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="guidingPrice" placeholder="Optional Price" /></td>
 	
 				</tr>
 				
@@ -203,7 +210,7 @@
 								<tr>
 				
 					<td class="desc">Splice Table:</td>
-					<td class="selection"><select name="spliceTable"><option value="Yes X6i">Yes (X6i)</option><option value="Yes X6s">Yes (X6s)</option><option value="No">No</option><option value="Optional">Optional</option></select></td>
+					<td class="selection"><select name="spliceTable"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select></td>
 	
 				</tr>
 				
@@ -217,7 +224,7 @@
 				<tr>
 				
 					<td class="desc">Core Size:</td>
-					<td class="selection"><input type="number" class="text" name="unwindCoreSize" /></td>
+					<td class="selection"><select name="unwindCoreSize"><option value="76.2mm (3 Inch)">76.2mm (3 inch)</option><option value="152.4mm (6 Inch)">152.4mm (6 Inch)</option><option value="72.6mm & 152.4mm (3 & 6 Inch)">72.6mm & 152.4mm (3 & 6 Inch)</option></select></td>
 	
 				</tr>
 			
@@ -230,7 +237,7 @@
 				<tr>
 				
 					<td class="desc">Drive Type:</td>
-					<td class="selection"><select name="driveType"><option value="Nip">Standard (Nip)</option><option value="Driven S Type">Driven "S" Type</option></select></td>
+					<td class="selection"><select name="driveType"><option value="Driven S Wrap">Standard (Driven "S" Wrap)</option><option value="Nip">Nip</option></select></td>
 				</tr>
 								
 			
@@ -284,7 +291,7 @@
 				<tr>
 				
 					<td class="desc">Spreader Roller:</td>
-					<td class="selection"><select name="spreaderRoller"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select></td>
+					<td class="selection"><select name="spreaderRoller"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="spreaderPrice" placeholder="Otional Price"/></td>
 	
 				</tr>
 
@@ -312,8 +319,8 @@
 				<tr>
 				
 					<td class="desc">ComputaCore:</td>
-					<td class="selection"><select name="computacore"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select></td>
-	
+					<td class="selection"><select name="computacore"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="computaCorePrice" placeholder="Optional Price" /></td>
+
 				</tr>
 				<tr>
 				
@@ -340,14 +347,13 @@
 				<tr>
 
 					<td class="desc">Anti-static Systems:</td>
-					<td class="selection"><select name="antiStatic"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select></td>
-	
+					<td class="selection"><select name="antiStatic"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="antiStaticPrice" placeholder="Optional Price"/></td>
 				</tr>
 				
 				<tr>
 				
 					<td class="desc">Maximum Machine Speed:</td>
-					<td class="selection"><input type="text" class="text" name="maxMachineSpeed" value="600m/Minute"/></td>
+					<td class="selection"><select name="maxMachineSpeed"><option value="600m/Minute">600m/Minute</option><option value="450m/Minute">450m/Minute</option><option value="300m/Minute">300m/Minute</option></select></td>
 	
 				</tr>
 				
@@ -361,8 +367,7 @@
 								<tr>
 				
 					<td class="desc">Offload Pusher:</td>
-					<td class="selection"><select name="offloadPusher"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select></td>
-	
+					<td class="selection"><select name="offloadPusher"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="offloadPrice" placeholder="Optional Price"/></td>
 				</tr>
 
 				<tr>
@@ -374,8 +379,7 @@
 				<tr>
 				
 					<td class="desc">Camera Systems:</td>
-					<td class="selection"><select name="cameras"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select></td>
-	
+					<td class="selection"><select name="cameras"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="cameraPrice" placeholder="Optional Price"/></td>
 				</tr>
 				
 
@@ -389,7 +393,7 @@
 				<tr>
 				
 					<td class="desc">Core Size:</td>
-					<td class="selection"><input type="text" class="text" name="rewindCoreSize" /></td>
+					<td class="selection"><select name="rewindCoreSize"><option value="76.2mm (3 Inch)">76.2mm (3 inch)</option><option value="152.4mm (6 Inch)">152.4mm (6 Inch)</option><option value="72.6mm & 152.4mm (3 & 6 Inch)">72.6mm & 152.4mm (3 & 6 Inch)</option></select></td>
 	
 				</tr>
 	

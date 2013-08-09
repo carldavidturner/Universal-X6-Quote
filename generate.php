@@ -2,7 +2,8 @@
 <html>
 
 	<head>
-		<?php 		$quoteNumber = $_REQUEST['quoteNumber'] ;		$company = $_REQUEST['companyName'] ;
+		<?php 		$quoteNumber = $_REQUEST['quoteNumber'] ;			$null = '' ;
+	$company = $_REQUEST['companyName'] ;
 
 ?>
 		<!-- css -->
@@ -21,15 +22,28 @@
 		
 		<?php 
 		
+		#PRE DEFINES
+		
+			$knivesIncl = $null ;
+			$anvilsIncl = $null ;
+			$razorsIncl = $null ;
+			$crushKnives = $null ;
+			$slittingType1 = $null ;
+			$slittingType2 = $null ;
+			$slittingType3 = $null ;
+			$slittingInfo1 = $null ;
+			$slittingInfo2 = $null ;
+			$slittingInfo3 = $null ;
+		
 		#GENERAL INFO!!
 		
 		$attention = $_REQUEST['attentionOf'] ;
-		$location = $_REQUEST['companyCountry'] ;
+		$companyCountry = $_REQUEST['companyCountry'] ;
 		$date = date('jS F Y') ;
 		$price = '<b>' . $_REQUEST['finalPrice'] . '</b>' ;
+		$priceAdditionalInfo = $_REQUEST['priceAdditionalInfo'] ;
 		$pageBreak = '<DIV style="page-break-after:always"></DIV>' ;
 		$region = $_REQUEST['region'] ;
-		$null = '' ;
 
 		
 		##MACHINE SPEC!!
@@ -37,7 +51,7 @@
 		$unwindType1 = $_REQUEST['shaftedShaftless'];
 		$unwindType2 = $_REQUEST['seperateIntegral'];
 		$unwindType3 = $_REQUEST['drivenBraked'];
-		$unwindMaxRollWid = $_REQUEST['maxUnloadRollWidth'];
+		$unwindMaxRollWid = $_REQUEST['maxUnwindRollWidth'];
 		$unwindMaxRollDia = $_REQUEST['maxUnwindRollDia'];
 		$unwindMinWebWid = $_REQUEST['minUnwindWebWidth'];
 		$unwindMinRollDia = $_REQUEST['minDiaFloorPickup'];
@@ -55,36 +69,48 @@
 		
 		if(($_REQUEST['shearYes']) == 'Shear')
 			{
-			$slittingType = 'Shear' ;
+			$slittingType1 = 'Shear, ' ;
+			$slittingInfo1 = $shear ;
 			$knivesIncl = '<li>Knives Included: ' . $_REQUEST['shearKnives'] . '</li>';
 			$anvilsIncl = '<li>Shear Anvils Included: ' . $_REQUEST['shearAnvils'] . '</li>' ;
-			$razorsIncl = $null ;
-			$crushKnives = $null ;
 			}
-		elseif(($_REQUEST['razorYes']) == 'Razor')
+		else
 			{
-			$slittingType = 'Razor' ;			
+			$slittingType1 = $null ;
+			$slittingInfo1 = $null ;
 			$knivesIncl = $null ;
 			$anvilsIncl = $null ;
+			}
+		
+		if(($_REQUEST['razorYes']) == 'Razor')
+			{
+			$slittingType2 = 'Razor, ' ;			
+			$slittingInfo2 = $razor ;
 			$razorsIncl = '<li>Razors Included: ' . $_REQUEST['razorKnives'] . '</li>' ;
-			$crushKnives = $null ;
 			}	
-		elseif(($_REQUEST['crushYes']) == 'Crush')
+		else
 			{
-			$slittingType = 'Crush' ;
-			$knivesIncl = $null ;
-			$anvilsIncl = $null ;
+			$slittingType2 = $null ;			
+			$slittingInfo2 = $null ;
 			$razorsIncl = $null ;
+			}
+		
+		if(($_REQUEST['crushYes']) == 'Crush')
+			{
+			$slittingType3 = 'Crush ' ;
+			$slittingInfo3 = $crush ;
 			$crushKnives = '<li>Crush Cut Knives Included: ' . $_REQUEST['crushKnives'] . '</li>' ;
 			}
 		else
 			{
-			die("An error occured.") ;
+			$slittingType3 = $null ;
+			$slittingInfo3 = $null ;
+			$crushKnives = $null ;
 			}	
 		
 		$minSlitWidth = $_REQUEST['minSlitWidth'];
 		$autoKnife = $_REQUEST['akp'];
-		$trimRemoval = $_REQUEST['trim'];
+		$trimRemovalType = $_REQUEST['trim'];
 		$spreaderRoller = $_REQUEST['spreaderRoller'];		
 		
 		$rewindType = $_REQUEST['rewindType'];
@@ -94,7 +120,7 @@
 		$rewindMaxRollWeight = $_REQUEST['maxRewindRollWeight'];
 		$layonRollers = $_REQUEST['layonRollers'];
 		$antiStatic = $_REQUEST['antiStatic'];
-		$maxMachinceSpeed = $_REQUEST['maxMachineSpeed'];
+		$maxMachineSpeed = $_REQUEST['maxMachineSpeed'];
 		$rewindTensionRange = $_REQUEST['rewindTensionRange'];
 		$onwardHandling = $_REQUEST['onwards'];
 		$rewindCoreMaterial = $_REQUEST['rewindCoreMaterial'];
@@ -125,14 +151,31 @@
 	</div><br/>' ;
 	
 	
-	if($unwindType1 == 'Shafted')
-		{
-		$unwindResponse = '' ;
-		}
-	else
-		{
-		$unwindResponse = '' ;
-		}	
+	
+	
+	
+	
+	
+	
+	
+	
+	$shaftedUnwind = '' ;
+
+
+
+	$shaftlessUnwind = '' ;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 			$shaftedYes = '<div>
@@ -143,7 +186,6 @@
 	</div><br/>' ;
 	
 	
-			$shaftedPrice = '<p class="price">' . $_REQUEST['4_2_pirce'] . '</p>' ;
 
 			$chucksYes = '<div>
 		<h4 id="6_2_title">Unwind chucks</h4>
@@ -153,17 +195,15 @@
 	</div><br/>' ;
 	
 	
-			$chucksPrice = '<p class="price">' . $_REQUEST['4_3_pirce'] . '</p>' ;
 
 			$armsYes = '<div>
 		<h4 id="6_2_title">Unwind arms</h4>
 		<p id="withoutimage">The unwind arms are mounted to linear slides which are in turn mounted onto a welded steel fabrication. This is mounted on an additional pair of linear slides which provide the floor pickup function.</p>
 
-		
+		 
 	</div><br/>' ;
 	
 	
-			$armsPrice = '<p class="price">' . $_REQUEST['4_4_pirce'] . '</p>' ;
 
 			$motorsYes = '<div>
 		<h4 id="6_2_title">Unwind motors</h4>
@@ -174,7 +214,6 @@
 	</div><br/>' ;
 	
 	
-			$motorsPrice = '<p class="price">' . $_REQUEST['4_5_pirce'] . '</p>' ;
 
 			$drivenYes = '<div>
 		<h4 id="6_2_title">Driven unwind</h4>
@@ -184,7 +223,6 @@
 	</div><br/>' ;
 	
 	
-			$drivenPrice = '<p class="price">' . $_REQUEST['4_6_pirce'] . '</p>' ;
 
 			$safetyYes = '<div>
 		<h4 id="6_2_title">Unwind safety</h4>
@@ -193,8 +231,6 @@
 		
 	</div><br/>' ;
 	
-	
-			$safetyPrice = '<p class="price">' . $_REQUEST['4_7_pirce'] . '</p>' ;
 
 			$controlsYes = '<div>
 		<h4 id="6_2_title">Unwind section operator controls</h4>
@@ -223,7 +259,6 @@
 	</div><br/>' ;
 	
 	
-			$controlsPrice = '<p class="price">' . $_REQUEST['4_8_pirce'] . '</p>' ;
 
 			$guidingYes = '<div>
 		<h4 id="6_2_title">Guiding</h4>
@@ -245,34 +280,44 @@
 		
 	</div><br/>' ;
 	
-	
-			$guidingPrice = '<p class="price">' . $_REQUEST['4_9_pirce'] . '</p>' ;
 
-			$spliceYes = '<div>
+
+				$guidingPrice = '<p class="price">' . $_REQUEST['guidingPrice'] . '</p>' ;
+	
+
+			$x6iSpliceYes = '<div>
 		<h4 id="6_2_title">Splice Table</h4>
-		<p id="withimage">A splice table, with web clamps or vacuum systems, can be mounted on the unwind side of the machine to assist the operator to join to neatly join two webs.
+		<p id="withimage">A splice table, with web clamps or vacuum systems, can be mounted on the unwind side of the machine to assist the operator to neatly join two webs.
 </p>
 
 		<img src="images/4_unwind/splice.jpeg" alt="Splice Table" id="splice_image" />
 		
 	</div><br/>
 ' ;
-	
-	
-			$splicePrice = '<p class="price">' . $_REQUEST['4_10_pirce'] . '</p>' ;
 
-			$trashYes = '<div>
-		<h4 id="6_2_title">Trash Winder</h4>
-		<p id="withoutimage">A trash winder is mounted above the unwind for winding of waste material being removed from parent rolls.
+			$x6sSpliceYes = '<div>
+		<h4 id="6_2_title">Splice Table</h4>
+		<p id="withimage">A splice table, with web clamps or vacuum systems, can be mounted on the unwind side of the machine to assist the operator to neatly join two webs.
 </p>
 
 		
-	</div><br/>' ;
+	</div><br/>
+' ;
 	
 	
-			$trashPrice = '<p class="price">' . $_REQUEST['4_11_pirce'] . '</p>' ;
 
-
+	if($seperateIntegral == 'Separate' && $spliceTable == 'Yes')
+		{
+		$splice = $x6sSpliceYes ;
+		}
+	elseif($seperateIntegral == 'Integral' && $spliceTable == 'Yes')
+		{
+		$plice = $x6iSpliceYes ;
+		}
+	else
+		{
+		$splice = $null ;
+		}
 
 		
 		##SECTION FIVE!!
@@ -282,27 +327,21 @@
 	
 	</div> <br/>' ;
 	
-			$mainYes = '<div>
+			$mainSWrap = '<div>
+		<h4 id="empty_title">Main Drive</h4>
+		<p id="withoutimage">Driven “S” wrap after the unwind and before the slitting knives isolating the unwind from the slitting and rewind tension zones driven by an AC Motor with encoder feedback and a digital flux vector drive system.</p>
+	
+		
+	</div><br/>' ;
+		
+			$mainNip = '<div>
 		<h4 id="empty_title">Main Drive</h4>
 		<p id="withoutimage">Driven “S” wrap after the unwind and before the slitting knives isolating the unwind from the slitting and rewind tension zones driven by an AC Motor with encoder feedback and a digital flux vector drive system.</p>
 	
 		
 	</div><br/>' ;
 	
-	
-			$mainPrice = '<p class="price">£9,999</p>' ;
-		
-		
-			$bowedYes = '<div>	
-		<h4 id="6_2_title">Bowed roller</h4>
-		<p id="withoutimage">Option for variable angled bowed roller prior to slitting knives.</p>
-		
-		
-	</div>	<br/>' ;
-		
-			
-			$bowedPrice = '<p class="price">£9,999</p>' ;
-
+						
 		
 		
 		##SECTION SIX!!
@@ -325,7 +364,7 @@
 		
 	</div> <br/>' ;
 		
-			$shearYes = '<div>
+			$shear = '<div>
 		<h4>Shear Slitting</h4>
 		<p id="withimage">Shaft-mounted shear knives. Circular knives that rotate together as a male and female pair acting much like a pair of scissors, generally used for heavier gauge films and papers</p>
 	
@@ -333,8 +372,23 @@
 		
 	</div><br/>' ;
 	
+			$razor = '<div>
+		<h4>Razor Slitting</h4>
+		<p id="withimage">Razor blades in comb. Individual safety razor blades are inserted into the slots in the razor comb. The slots are at 1mm intervals so positioning is simple and precise. This greatly reduces setup times.</p>
 	
-			$shearPrice = '<p class="price">£9,999</p>' ;
+		<img src="images/6_1_slitter/razor.jpeg" alt="Razor Slitter" id="razor_image" />
+		
+	</div><br/>' ;
+	
+			$crush = '<div>
+		<h4>Crush Cutting</h4>
+		<p id="withimage"></p>
+	
+		<img src="images/6_1_slitter/crush.jpeg" alt="Crush Cutting" id="shear_image" />
+		
+	</div><br/>' ;
+	
+	
 		
 		
 			$autoYes = '<div>	
@@ -346,22 +400,10 @@
 	</div>	<br/>' ;
 		
 			
-			$autoPrice = '<p class="price">£9,999</p>' ;
 		
 		
-			$razorYes = '<div>
-		<h4>Razor Slitting</h4>
-		<p id="withimage">Razor blades in comb. Individual safety razor blades are inserted into the slots in the razor comb. The slots are at 1mm intervals so positioning is simple and precise. This greatly reduces setup times.</p>
-	
-		<img src="images/6_1_slitter/razor.jpeg" alt="Razor Slitter" id="razor_image" />
 		
-	</div> <br/>' ;
-
-
-			$razorPrice = '<p class="price">£9,999</p>' ;
-
-		
-			$trimWinderYes = '<div>
+			$winder = '<div>
 		<h4>Oscillating Trim Winder</h4>
 		<p id="withimage">Two oscillating trim winders to take away trim from the web.</p>
 	
@@ -370,10 +412,9 @@
 	</div> <br/>' ;
 	
 			
-			$winderPrice = '<p class="price">£9,999</p>' ;
 
 		
-			$trimBlowerYes = '<div>	
+			$blower = '<div>	
 		<h4 id="6_2_title">Trim Blower</h4>
 		<p id="withimage">Supply of trim blower, fitted with venturi, to handle trims at width of ¼ inch to 1 inch wide.</p>
 		
@@ -381,11 +422,22 @@
 		
 	</div>	<br/>' ;
 	
+	
+	
+			$spreaderRollerYes = '<div>	
+		<h4 id="6_2_title">Spreader Roller</h4>
+		<p id="withoutimage"></p>
 		
-			$blowerPrice = '<p class="price">£9,999</p>' ;
+		
+	</div>	<br/>';
+	
+				
+				$spreaderPrice = '<p class="price">' . $_REQUEST['spreaderPrice'] . '</p>' ;
 
+	
+	
 		
-			$tensionYes = '<div>
+			$slittingTension = '<div>
 		<h4>Slitting tension section</h4>
 		<p id="withoutimage">The X6 has an important feature seldom found on slitter rewinders. This feature allows independent control of the tension in the slitting section of the machine. Therefore the machine has three independently controllable tension zones, unwind, slitting and rewind.  Most slitting machines have the slitting section positioned in the rewind section, meaning that whatever the rewind tension is is the tension through the slitters, whether this rewind tension is correct for slitting or not.  The slitting tension parameter is stored in the job recipe along with the other operator settings.</p>
 	
@@ -393,7 +445,6 @@
 	</div><br/>' ;
 		
 		
-			$tensionPrice = '<p class="price">£9,999</p>' ;
 
 			
 		##SECTION SEVEN!!
@@ -404,20 +455,28 @@
 	</div> <br/>
 ' ;
 		
-			$duplexYes = '		<div>
-		<h4 id="empty_title">Duplex or Turret</h4>
+			$duplex = '		<div>
+		<h4 id="empty_title">Duplex Rewind</h4>
 		
-		<p id="withoutimage">The rewind section is available as either Duplex or Turret. The duplex has two rewind shafts whereas turretting rewinder has four shafts. The duplex version is suitable for general purpose work with relatively frequent setup changes. The turretting version is designed for longer runs where the same setup may be on the machine for several days or even weeks.</p>
+		<p id="withoutimage">The duplex rewind has two rewind shafts and is suitable for general purpose work with relatively frequent setup changes. </p>
+
+		
+	</div><br/>
+' ;
+
+			$turret = '		<div>
+		<h4 id="empty_title">Turreting Rewind</h4>
+		
+		<p id="withoutimage">The turreting rewinder has four shafts. The turreting rewind is designed for longer runs where the same setup may be on the machine for several days or even weeks.</p>
 
 		
 	</div><br/>
 ' ;
 			
-			$duplexPrice = '<p class="price">£9,999</p>' ;
 
 
-			$windingYes = '	<div>
-		<h4 id="6_2_title">Winding Type</h4>
+			$differentialShafts = '	<div>
+		<h4 id="6_2_title">Differential Shafts</h4>
 		<p id="withimage">Differential shafts with double ball differential chucks. The chucks lock to the inside of the core and produce no core dust. These ensure that the rewound tension is equal in each reel regardless of width or material thickness variation</p>
 
 		<img src="images/7_rewind/winding.jpeg" alt="Winding" id="rewind_image" />
@@ -426,7 +485,15 @@
 	
 ' ;
 			
-			$windingPrice = '<p class="price">£9,999</p>' ;
+			$airShafts = '	<div>
+		<h4 id="6_2_title">Air Shafts</h4>
+		<p id="withoutimage"></p>
+
+		
+	</div><br/>
+	
+' ;
+			
 
 
 			$computacoreYes = '	<div>
@@ -439,7 +506,7 @@
 	</div><br/>
 ' ;
 			
-			$computacorePrice = '<p class="price">£9,999</p>' ;
+			$computacorePrice = '<p class="price">' . $_REQUEST['computaCorePrice'] . '</p>' ;
 
 
 			$layonYes = '	<div>
@@ -451,7 +518,6 @@
 	</div><br/>
 ' ;
 			
-			$layonPrice = '<p class="price">£9,999</p>' ;
 
 
 			$tensionControlYes = '	<div>
@@ -461,7 +527,6 @@
 	</div><br/>
 ' ;
 			
-			$tensionControlPrice = '<p class="price">£9,999</p>' ;
 
 
 			$lengthCounterYes = '	<div>
@@ -471,7 +536,6 @@
 	</div><br/>
 ' ;
 			
-			$lengthCounterPrice = '<p class="price">£9,999</p>' ;
 
 
 			$staticYes = '	<div>
@@ -481,7 +545,7 @@
 	</div><br/>
 ' ;
 			
-			$staticPrice = '<p class="price">£9,999</p>' ;
+			$staticPrice = '<p class="price">' . $_REQUEST['antiStaticPrice'] . '</p>' ;
 
 
 			$unloadingYes = '	<div>
@@ -493,8 +557,6 @@
 	</div><br/>
 ' ;
 			
-			$unloadingPrice = '<p class="price">£9,999</p>' ;
-
 
 			$pusherYes = '	<div>
 		<h4 id="6_2_title">Off-load Pusher</h4>
@@ -505,7 +567,7 @@
 	</div><br/>
 ' ;
 			
-			$pusherPrice = '<p class="price">£9,999</p>' ;
+			$pusherPrice = '<p class="price">' . $_REQUEST['offloadPrice'] . '</p>' ;
 
 
 			$robotYes = '	<div>
@@ -517,7 +579,13 @@
 	</div><br/>
 ' ;
 			
-			$robotPrice = '<p class="price">£9,999</p>' ;
+			$trolleyYes = '	<div>
+		<h4 id="6_2_title">Roll Handling Trolley</h4>
+		<p id="withoutimage"></p>
+		
+		
+	</div><br/>
+' ;
 
 
 			$cameraYes = '	<div>
@@ -529,7 +597,7 @@
 	</div><br/>
 ' ;
 			
-			$cameraPrice = '<p class="price">£9,999</p>' ;
+			$cameraPrice = '<p class="price">' . $_REQUEST['cameraPrice'] . '</p>' ;
 
 
 		##SECTION EIGHT!!
@@ -539,43 +607,26 @@
 
 		<p>All drives and controls are integral, but can be supplied in a separate control unit if required.</p>	
 	</div> <br/>
-' ;
-		
-			$operatorControlsYes = '	<div>
+<div>
 		<h4 id="6_2_title">Operator Controls</h4>
 		<p id="withimage">Colour touch screen incorporating all machine operations.  This system has a job data memory recall system. Message displays indicate faults conditions such as guards open or E-stop pressed. The comprehensive system has been designed to be simple and straightforward to operate but with extensive diagnostic when required.</p>
 
 		<img src="images/8_drive/controls.jpeg" alt="" id="operatorcontrols_image" />
 		
 	</div><br/>
-' ;
-			
-			$operatorControlsPrice = '<p class="price">£9,999</p>' ;
-
-
-			$remoteDiagnosticsYes = '	<div>
+	<div>
 		<h4 id="6_2_title">Remote Diagnostics</h4>
 		<p id="withoutimage">The controls are designed to be very simple to operate yet the system has extensive diagnostics should they be required. We also provide a port on the system for secure Internet access to allow our engineers to monitor the performance of the machine remotely.  To utilise the remote diagnostic system, we require the customer to provide a static IP address with port forwarding.</p>
 
 		
 	</div><br/>
-' ;
-			
-			$remoteDiagnosticsPrice = '<p class="price">£9,999</p>' ;
-
-
-			$driveMotorsYes = '	<div>
+	<div>
 		<h4 id="6_2_title">Drive Motors</h4>
 		<p id="withoutimage">AC Vector Motors with closed loop feedback. A fail safe disc brake is included for fast emergency stopping and holding the shaft stationary during roll changes.</p>
 
 		
 	</div><br/>
-' ;
-			
-			$driveMotorsPrice = '<p class="price">£9,999</p>' ;
-
-
-			$driveTypeYes = '	<div>
+	<div>
 		<h4 id="6_2_title">Drive Type</h4>
 		<p id="withoutimage">Digital AC vector drives from Emerson Control Techniques with high speed communication between drives. The DC bus of the two drives is linked so that when a drive is in braking mode, the energy generated is used to feed the drive that is consuming power. This greatly reduces the energy consumption of the machine.</p>
 
@@ -583,7 +634,6 @@
 	</div><br/>
 ' ;
 			
-			$driveTypePrice = '<p class="price">£9,999</p>' ;
 
 
 			$machineGuardingYes = '	<div>
@@ -594,13 +644,11 @@
 	</div><br/>
 ' ;
 			
-			$machineGuardingPrice = '<p class="price">£9,999</p>' ;
-
 
 		
 			
 			
-			if(($_POST['1_5']) == 'United Kingdom or Europe')
+			if(($_POST['region']) == 'Europe')
 				{
 				$powerRequirements = '<li>380-420V 3 phase (No Neutral), 50Hz ±10%</li>' ;
 				}
@@ -611,797 +659,238 @@
 		
 		##SECTION FOUR IF STATEMENTS
 		
-			if(($_POST['4_1']) == 'Yes')
+			if($uniwndType1 == 'Shafted')
     			{
-    			$unwind = $unwindYes ;
-				$unwindOption = $null ;
+    			$unwind = $shaftedUnwind ;
 				}
-			elseif(($_POST['4_1']) == 'No')
-				{
-				$unwind = $null ;
-				$unwindOption = $null ;	
-				}	
-			elseif(($_POST['4_1']) == 'Optional')
-				{
-				$unwindOption = $unwindYes . $unwindPrice ;
-				$unwind = $null ;
-				}	
 			else
 				{
-				$unwind = $null ;
-				$unwindOption = $null ;
-				echo( '4.1 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
+				$unwind = $shaftlessUnwind ;
 				}	
 		
-			if(($_POST['4_2']) == 'Yes')
-    			{
-    			$shafted = $shaftedYes ;
-				$shaftedOption = $null ;
+			
+			
+			if($webGuiding == 'Yes')
+				{
+				$guiding = $guidingYes;
+				$guidingOption = $null ;
 				}
-			elseif(($_POST['4_2']) == 'No')
-				{
-				$shafted = $null ;
-				$shaftedOption = $null ;	
-				}	
-			elseif(($_POST['4_2']) == 'Optional')
-				{
-				$shaftedOption = $shaftedYes . $shaftedPrice ;
-				$shafted = $null ;
-				}	
-			else
-				{
-				$shafted = $null ;
-				$shaftedOption = $null ;
-				echo( '4.2 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_3']) == 'Yes')
-    			{
-    			$chucks = $chucksYes ;
-				$chucksOption = $null ;
-				}
-			elseif(($_POST['4_3']) == 'No')
-				{
-				$chucks = $null ;
-				$chucksOption = $null ;	
-				}	
-			elseif(($_POST['4_3']) == 'Optional')
-				{
-				$chucksOption = $chucksYes . $chucksPrice ;
-				$chucks = $null ;
-				}	
-			else
-				{
-				$chucks = $null ;
-				$chucksOption = $null ;
-				echo( '4.3 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_4']) == 'Yes')
-    			{
-    			$arms = $armsYes ;
-				$armsOption = $null ;
-				}
-			elseif(($_POST['4_4']) == 'No')
-				{
-				$arms = $null ;
-				$armsOption = $null ;	
-				}	
-			elseif(($_POST['4_4']) == 'Optional')
-				{
-				$armsOption = $armsYes . $armsPrice ;
-				$arms = $null ;
-				}	
-			else
-				{
-				$arms = $null ;
-				$armsOption = $null ;
-				echo( '4.4 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_5']) == 'Yes')
-    			{
-    			$motors = $motorsYes ;
-				$motorsOption = $null ;
-				}
-			elseif(($_POST['4_5']) == 'No')
-				{
-				$motors = $null ;
-				$motorsOption = $null ;	
-				}	
-			elseif(($_POST['4_5']) == 'Optional')
-				{
-				$motorsOption = $motorsYes . $motorsPrice ;
-				$motors = $null ;
-				}	
-			else
-				{
-				$motors = $null ;
-				$motorsOption = $null ;
-				echo( '4.5 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_6']) == 'Yes')
-    			{
-    			$driven = $drivenYes ;
-				$drivenOption = $null ;
-				}
-			elseif(($_POST['4_6']) == 'No')
-				{
-				$driven = $null ;
-				$drivenOption = $null ;	
-				}	
-			elseif(($_POST['4_6']) == 'Optional')
-				{
-				$drivenOption = $drivenYes . $drivenPrice ;
-				$driven = $null ;
-				}	
-			else
-				{
-				$driven = $null ;
-				$drivenOption = $null ;
-				echo( '4.6 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_7']) == 'Yes')
-    			{
-    			$safety = $safetyYes ;
-				$safetyOption = $null ;
-				}
-			elseif(($_POST['4_7']) == 'No')
-				{
-				$safety = $null ;
-				$safetyOption = $null ;	
-				}	
-			elseif(($_POST['4_7']) == 'Optional')
-				{
-				$safetyOption = $safetyYes . $safetyPrice ;
-				$safety = $null ;
-				}	
-			else
-				{
-				$safety = $null ;
-				$safetyOption = $null ;
-				echo( '4.7 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_8']) == 'Yes')
-    			{
-    			$controls = $controlsYes ;
-				$controlsOption = $null ;
-				}
-			elseif(($_POST['4_8']) == 'No')
-				{
-				$controls = $null ;
-				$controlsOption = $null ;	
-				}	
-			elseif(($_POST['4_8']) == 'Optional')
-				{
-				$controlsOption = $controlsYes . $controlsPrice ;
-				$controls = $null ;
-				}	
-			else
-				{
-				$controls = $null ;
-				$controlsOption = $null ;
-				echo( '4.8 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_9']) == 'Yes')
-    			{
-    			$guiding = $guidingYes ;
-				$guidingption = $null ;
-				}
-			elseif(($_POST['4_9']) == 'No')
-				{
-				$guiding = $null ;
-				$guidingOption = $null ;	
-				}	
-			elseif(($_POST['4_9']) == 'Optional')
-				{
-				$guidingOption = $guidingYes . $guidingPrice ;
-				$guiding = $null ;
-				}	
-			else
+			elseif($webGuiding == 'No')
 				{
 				$guiding = $null ;
 				$guidingOption = $null ;
-				echo( '4.9 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_10']) == 'Yes')
-    			{
-    			$splice = $spliceYes ;
-				$spliceOption = $null ;
 				}
-			elseif(($_POST['4_10']) == 'No')
-				{
-				$splice = $null ;
-				$spliceOption = $null ;	
-				}	
-			elseif(($_POST['4_10']) == 'Optional')
-				{
-				$spliceOption = $spliceYes . $splicePrice ;
-				$splice = $null ;
-				}	
 			else
 				{
-				$splice = $null ;
-				$spliceOption = $null ;
-				echo( '4.10 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-		
-			if(($_POST['4_11']) == 'Yes')
-    			{
-    			$trash = $trashYes ;
-				$trashOption = $null ;
+				$guiding = $null ;
+				$guidingOption = $guidingYes . $guidingPrice ; 
 				}
-			elseif(($_POST['4_11']) == 'No')
-				{
-				$trash = $null ;
-				$trashOption = $null ;	
-				}	
-			elseif(($_POST['4_11']) == 'Optional')
-				{
-				$trashOption = $trashYes . $trashPrice ;
-				$trash = $null ;
-				}	
-			else
-				{
-				$trash = $null ;
-				$trashOption = $null ;
-				echo( '4.11 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
+				
+				
+				
+			
 
 		##SECTION FIVE IF STATEMENTS
 		
-			if(($_POST['5_1']) == 'Yes')
+			if(($_POST['driveType']) == 'Nip')
     			{
-    			$main = $mainYes ;
-				$mainOption = $null ;
+    			$main = $mainNip ;
 				}
-			elseif(($_POST['5_1']) == 'No')
-				{
-				$main = $null ;
-				$mainOption = $null ;	
-				}	
-			elseif(($_POST['5_1']) == 'Optional')
-				{
-				$mainOption = $mainYes . $mainPrice ;
-				$main = $null ;
-				}	
 			else
 				{
-				$main = $null ;
-				$mainOption = $null ;
-				echo( '5.1 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
+				$main = $mainSWrap ;
 				}	
-
-
-			if(($_POST['5_2']) == 'Yes')
-    			{
-    			$bowed = $bowedYes ;
-				$bowedOption = $null ;
-				}
-			elseif(($_POST['5_2']) == 'No')
-				{
-    			$bowed = $null ;
-				$bowedOption = $null ;
-				}	
-			elseif(($_POST['5_2']) == 'Optional')
-				{
-				$bowedOption = $bowedYes . $bowedPrice ;
-    			$bowed = $null ;
-				}	
-			else
-				{
-				$bowed = $null ;
-				$bowedOption = $null ;
-				echo( '5.2 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
-
 		
 		
 		
 		
 		##SECTION SIX IF STATEMENTS
 		
-			if(($_POST['6_1']) == 'Yes')
+			if($autoKnife == 'None')
     			{
-    			$shear = $shearYes ;
-				$shearOption = $null ;
-				}
-			elseif(($_POST['6_1']) == 'No')
-				{
-				$shear = $null ;
-				$shearOption = $null ;	
-				}	
-			elseif(($_POST['6_1']) == 'Optional')
-				{
-				$shearOption = $shearYes . $shearPrice ;
-				$shear = $null ;
-				}	
-			else
-				{
-				$shear = $null ;
-				$shearOption = $null ;
-				echo( '6.1 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help.<br/>'  ) ;
-				}	
-
-
-			if(($_POST['6_2']) == 'Yes')
-    			{
-    			$auto = $autoYes ;
-				$autoOption = $null ;
-				}
-			elseif(($_POST['6_2']) == 'No')
-				{
     			$auto = $null ;
-				$autoOption = $null ;
-				}	
-			elseif(($_POST['6_2']) == 'Optional')
-				{
-				$autoOption = $autoYes . $autoPrice ;
-    			$auto = $null ;
-				}	
-			else
-				{
-				$auto = $null ;
-				$autoOption = $null ;
-				echo( '6.2 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
-
-
-			if(($_POST['6_3']) == 'Yes')
-    			{
-    			$razor = $razorYes ;
-				$razorOption = $null ;
 				}
-			elseif(($_POST['6_3']) == 'No')
-				{
-    			$razor = $null ;
-				$razorOption = $null ;
-				}	
-			elseif(($_POST['6_3']) == 'Optional')
-				{
-				$razorOption = $razorYes . $razorPrice ;
-    			$razor = $null ;
-				}	
 			else
 				{
-				$razor = $null ;
-				$razorOption = $null ;
-				echo( '6.3 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
+				$auto = $autoYes ;
 				}	
+	
 
 
-			if(($_POST['6_4']) == 'Yes')
+
+
+			if($trimRemovalType == 'Winder')
     			{
-    			$trimWinder = $trimWinderYes ;
-				$trimWinderOption = $null ;
+    			$trimRemoval = $winder ;
 				}
-			elseif(($_POST['6_4']) == 'No')
-				{
-    			$trimWinder = $null ;
-				$trimWinderOption = $null ;
-				}	
-			elseif(($_POST['6_4']) == 'Optional')
-				{
-				$trimWinderOption = $trimWinderYes . $winderPrice ;
-    			$trimWinder = $null ;
-				}	
 			else
 				{
-				$trimWinder = $null ;
-				$trimWinderOption = $null ;
-				echo( '6.4 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
-
-
-			if(($_POST['6_5']) == 'Yes')
-    			{
-    			$trimBlower = $trimBlowerYes ;
-				$trimBlowerOption = $null ;
-				}
-			elseif(($_POST['6_5']) == 'No')
-				{
-    			$trimBlower = $null ;
-				$trimBlowerOption = $null ;
-				}	
-			elseif(($_POST['6_5']) == 'Optional')
-				{
-				$trimBlowerOption = $trimBlowerYes . $blowerPrice ;
-    			$trimBlower = $null ;
-				}	
-			else
-				{
-				$trimBlower = $null ;
-				$trimBlowerOption = $null ;
-				echo( '6.5 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
-
-
-			if(($_POST['6_6']) == 'Yes')
-    			{
-    			$tension = $tensionYes ;
-				$tensionOption = $null ;
-				}
-			elseif(($_POST['6_6']) == 'No')
-				{
-    			$tension = $null ;
-				$tensionOption = $null ;
-				}	
-			elseif(($_POST['6_6']) == 'Optional')
-				{
-				$tensionOption = $tensionYes . $tensionPrice ;
-    			$tension = $null ;
-				}	
-			else
-				{
-				$tension = $null ;
-				$tensionOption = $null ;
-				echo( '6.6 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
+    			$trimRemoval = $blower ;
 				}	
 				
 				
+				
+			if($spreaderRoller == 'Yes')
+    			{
+    			$spreaderRollerYes = $spreaderRollerYes ;
+				$spreaderOption = $null ;
+				}
+			elseif($computacore == 'No')
+				{
+    			$spreaderRollerYes = $null ;
+				$spreaderOption = $null ;
+				}	
+			else				{
+				$spreaderOption = $spreaderRollerYes . $spreaderPrice ;
+    			$spreaderRollerYes = $null ;
+				}	
+			
+
+
+
+
+
+
 				
 			##SECTION SEVEN IF STATEMENTS
 			
 			
-			if(($_POST['7_1']) == 'Yes')
+			if($rewindType == 'Duplex')
     			{
-    			$duplex = $duplexYes ;
-				$duplexOption = $null ;
+    			$rewind = $duplex ;
 				}
-			elseif(($_POST['7_1']) == 'No')
-				{
-    			$duplex = $null ;
-				$duplexOption = $null ;
-				}	
-			elseif(($_POST['7_1']) == 'Optional')
-				{
-				$duplexOption = $duplexYes . $duplexPrice ;
-    			$duplex = $null ;
-				}	
 			else
 				{
-				$duplex = $null ;
-				$duplexOption = $null ;
-				echo( '7.1 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
+    			$rewind = $turret ;
 				}	
 
-			if(($_POST['7_2']) == 'Yes')
+
+
+
+			if($shaftType == 'Air')
     			{
-    			$winding = $windingYes ;
-				$windingOption = $null ;
-				}
-			elseif(($_POST['7_2']) == 'No')
-				{
-    			$winding = $null ;
-				$windingOption = $null ;
-				}	
-			elseif(($_POST['7_2']) == 'Optional')
-				{
-				$windingOption = $windingYes . $windingPrice ;
-    			$winding = $null ;
-				}	
+    			$winding = $airShafts ;
+   				}
 			else
 				{
-				$winding = $null ;
-				$windingOption = $null ;
-				echo( '7.2 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
+    			$winding = $differentialShafts ;
 				}	
 
-			if(($_POST['7_3']) == 'Yes')
+
+
+			if($computacore == 'Yes')
     			{
-    			$computacore = $computacoreYes ;
+    			$computacoreInfo = $computacoreYes ;
 				$computacoreOption = $null ;
 				}
-			elseif(($_POST['7_3']) == 'No')
+			elseif($computacore == 'No')
 				{
-    			$computacore = $null ;
+    			$computacoreInfo = $null ;
 				$computacoreOption = $null ;
 				}	
-			elseif(($_POST['7_3']) == 'Optional')
-				{
+			else				{
 				$computacoreOption = $computacoreYes . $computacorePrice ;
     			$computacore = $null ;
 				}	
-			else
-				{
-				$computacore = $null ;
-				$computacoreOption = $null ;
-				echo( '7.3 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
 
-			if(($_POST['7_4']) == 'Yes')
+
+
+
+
+			if($layonRollers == 'Yes')
     			{
     			$layon = $layonYes ;
-				$layonOption = $null ;
 				}
-			elseif(($_POST['7_4']) == 'No')
+			else
 				{
     			$layon = $null ;
-				$layonOption = $null ;
-				}	
-			elseif(($_POST['7_4']) == 'Optional')
-				{
-				$layonOption = $layonYes . $layonPrice ;
-    			$layon = $null ;
-				}	
-			else
-				{
-				$layon = $null ;
-				$layonOption = $null ;
-				echo( '7.4 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
 				}	
 
-			if(($_POST['7_5']) == 'Yes')
-    			{
-    			$tensionControl = $tensionControlYes ;
-				$tensionControlOption = $null ;
-				}
-			elseif(($_POST['7_5']) == 'No')
-				{
-    			$tensionControl = $null ;
-				$tensionControlOption = $null ;
-				}	
-			elseif(($_POST['7_5']) == 'Optional')
-				{
-				$tensionControlOption = $tensionControlYes . $tensionControlPrice ;
-    			$tensionControl = $null ;
-				}	
-			else
-				{
-				$tensionControl = $null ;
-				$tensionControlOption = $null ;
-				echo( '7.5 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
 
-			if(($_POST['7_6']) == 'Yes')
-    			{
-    			$lengthCounter = $lengthCounterYes ;
-				$lengthCounterOption = $null ;
-				}
-			elseif(($_POST['7_6']) == 'No')
-				{
-    			$lengthCounter = $null ;
-				$lengthCounterOption = $null ;
-				}	
-			elseif(($_POST['7_6']) == 'Optional')
-				{
-				$lengthCounterOption = $lengthCounterYes . $lengthCounterPrice ;
-    			$lengthCounter = $null ;
-				}	
-			else
-				{
-				$lengthCounter = $null ;
-				$lengthCounterOption = $null ;
-				echo( '7.6 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
 
-			if(($_POST['7_7']) == 'Yes')
+
+
+			if($antiStatic == 'Yes')
     			{
     			$static = $staticYes ;
 				$staticOption = $null ;
 				}
-			elseif(($_POST['7_7']) == 'No')
+			elseif($antiStatic == 'No')
 				{
     			$static = $null ;
 				$staticOption = $null ;
 				}	
-			elseif(($_POST['7_7']) == 'Optional')
+			else
 				{
 				$staticOption = $staticYes . $staticPrice ;
     			$static = $null ;
 				}	
-			else
-				{
-				$static = $null ;
-				$staticOption = $null ;
-				echo( '7.7 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
 
-			if(($_POST['7_8']) == 'Yes')
-    			{
-    			$unloading = $unloadingYes ;
-				$unloadingOption = $null ;
-				}
-			elseif(($_POST['7_8']) == 'No')
-				{
-    			$unloading = $null ;
-				$unloadingOption = $null ;
-				}	
-			elseif(($_POST['7_8']) == 'Optional')
-				{
-				$unloadingOption = $unloadingYes . $unloadingPrice ;
-    			$unloading = $null ;
-				}	
-			else
-				{
-				$unloading = $null ;
-				$unloadingOption = $null ;
-				echo( '7.8 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
 
-			if(($_POST['7_9']) == 'Yes')
+
+
+			if(($_POST['offloadPusher']) == 'Yes')
     			{
     			$pusher = $pusherYes ;
 				$pusherOption = $null ;
 				}
-			elseif(($_POST['7_9']) == 'No')
+			elseif(($_POST['offloadPusher']) == 'No')
 				{
     			$pusher = $null ;
 				$pusherOption = $null ;
 				}	
-			elseif(($_POST['7_9']) == 'Optional')
+			else
 				{
 				$pusherOption = $pusherYes . $pusherPrice ;
     			$pusher = $null ;
 				}	
-			else
-				{
-				$pusher = $null ;
-				$pusherOption = $null ;
-				echo( '7.9 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
 
-			if(($_POST['7_10']) == 'Yes')
+
+
+
+
+
+			if($onwardHandling == 'Trolley')
     			{
-    			$robot = $robotYes ;
-				$robotOption = $null ;
+    			$onwardHandlingInfo = $trolleyYes ;
 				}
-			elseif(($_POST['7_10']) == 'No')
+			elseif($onwardHandling == 'Unloading Tree')
 				{
-    			$robot = $null ;
-				$robotOption = $null ;
-				}	
-			elseif(($_POST['7_10']) == 'Optional')
-				{
-				$robotOption = $robotYes . $robotPrice ;
-    			$robot = $null ;
+    			$onwardHandlingInfo = $unloadingYes ;
 				}	
 			else
 				{
-				$robot = $null ;
-				$robotOption = $null ;
-				echo( '7.10 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
+				$onwardHandlingInfo = $robotYes ;
 				}	
 
-			if(($_POST['7_11']) == 'Yes')
+			if($cameraSystem == 'Yes')
     			{
     			$camera = $cameraYes ;
 				$cameraOption = $null ;
 				}
-			elseif(($_POST['7_11']) == 'No')
+			elseif($cameraSystem == 'No')
 				{
     			$camera = $null ;
 				$cameraOption = $null ;
-				}	
-			elseif(($_POST['7_11']) == 'Optional')
-				{
-				$cameraOption = $cameraYes . $cameraPrice ;
-    			$camera = $null ;
 				}	
 			else
 				{
-				$camera = $null ;
-				$cameraOption = $null ;
-				echo( '7.11 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
+				$cameraOption = $cameraYes . $cameraPrice ;
+    			$camera = $null ;
 				}	
 
 
 
 			##SECTION EIGHT IF STATEMENTS
 			
-			if(($_POST['8_1']) == 'Yes')
-    			{
-    			$operatorControls = $operatorControlsYes ;
-				$operatorControlsOption = $null ;
-				}
-			elseif(($_POST['8_1']) == 'No')
-				{
-    			$operatorControls = $null ;
-				$operatorControlsOption = $null ;
-				}	
-			elseif(($_POST['8_1']) == 'Optional')
-				{
-				$operatorControlsOption = $operatorControlsYes . $operatorControlsPrice ;
-    			$operatorControls = $null ;
-				}	
-			else
-				{
-				$operatorControls = $null ;
-				$operatorControlsOption = $null ;
-				echo( '8.1 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
 
-			if(($_POST['8_2']) == 'Yes')
-    			{
-    			$remoteDiagnostics = $remoteDiagnosticsYes ;
-				$remoteDiagnosticsOption = $null ;
-				}
-			elseif(($_POST['8_2']) == 'No')
-				{
-    			$remoteDiagnostics = $null ;
-				$remoteDiagnosticsOption = $null ;
-				}	
-			elseif(($_POST['8_2']) == 'Optional')
-				{
-				$remoteDiagnosticsOption = $remoteDiagnosticsYes . $remoteDiagnosticsPrice ;
-    			$remoteDiagnostics = $null ;
-				}	
-			else
-				{
-				$remoteDiagnostics = $null ;
-				$remoteDiagnosticsOption = $null ;
-				echo( '8.2 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
-
-			if(($_POST['8_3']) == 'Yes')
-    			{
-    			$driveMotors = $driveMotorsYes ;
-				$driveMotorsOption = $null ;
-				}
-			elseif(($_POST['8_3']) == 'No')
-				{
-    			$driveMotors = $null ;
-				$driveMotorsOption = $null ;
-				}	
-			elseif(($_POST['8_3']) == 'Optional')
-				{
-				$driveMotorsOption = $driveMotorsYes . $driveMotorsPrice ;
-    			$driveMotors = $null ;
-				}	
-			else
-				{
-				$driveMotors = $null ;
-				$driveMotorsOption = $null ;
-				echo( '8.3 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
-
-			if(($_POST['8_4']) == 'Yes')
-    			{
-    			$driveType = $driveTypeYes ;
-				$driveTypeOption = $null ;
-				}
-			elseif(($_POST['8_4']) == 'No')
-				{
-    			$driveType = $null ;
-				$driveTypeOption = $null ;
-				}	
-			elseif(($_POST['8_4']) == 'Optional')
-				{
-				$driveTypeOption = $driveTypeYes . $driveTypePrice ;
-    			$driveType = $null ;
-				}	
-			else
-				{
-				$driveType = $null ;
-				$driveTypeOption = $null ;
-				echo( '8.4 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
-				}	
-
-			if(($_POST['8_5']) == 'Yes')
+			if($region == 'Europe')
     			{
     			$machineGuarding = $machineGuardingYes ;
-				$machineGuardingOption = $null ;
 				}
-			elseif(($_POST['8_5']) == 'No')
-				{
-    			$machineGuarding = $null ;
-				$machineGuardingOption = $null ;
-				}	
-			elseif(($_POST['8_5']) == 'Optional')
-				{
-				$machineGuardingOption = $machineGuardingYes . $machineGuardingPrice ;
-    			$machineGuarding = $null ;
-				}	
 			else
 				{
-				$machineGuarding = $null ;
-				$machineGuardingOption = $null ;
-				echo( '8.5 BROKEN - Either you did not make a selection, or there is a problem. Please contact Carl Turner (cturner@universalconvertingequipment.com) for help. <br/>' ) ;
+    			$machineGuarding = $null ;
 				}	
 
 
@@ -1616,7 +1105,7 @@
 				<li>Roll Material: ' . $unwindRollMaterial . '</li>
 				<li>Material Thickness: ' . $unwindMaterialThick . '</li>
 				<li>Web Guiding: ' . $webGuiding . '</li>
-				<li>Peeler Roller: ' . $peeler . '</li>
+				<li>Peel Off Roller: ' . $peeler . '</li>
 				<li>Tension Range: ' . $unwindTensionRange . '</li>
 				<li>Camera System: ' . $cameraSystem . '</li>
 				<li>Core Material: ' . $unwindCoreMaterial . '</li>
@@ -1628,31 +1117,29 @@
 			
 			<ul id="list">
 			
-				<li>Slitting Type: ' . $slittingType . '</li>'
+				<li>Slitting Type: ' . $slittingType1 . $slittingType2 . $slittingType3 . '</li>'
 				 . $knivesIncl . $anvilsIncl . $razorsIncl . $crushKnives . '
 				<li>Minimum Slit Width: ' . $minSlitWidth . '</li>
 				<li>Splice Table: ' . $spliceTable . '</li>
 				<li>Automatic Knife Positioning: ' . $autoKnife . '</li>
-				<li>Trim Removal Type: ' . $trimRemoval . '</li>
-			
+				<li>Trim Removal Type: ' . $trimRemovalType . '</li>
+				<li>Spreader Roller: ' . $spreaderRoller . '</li>
 			</ul>
 
 			<h4>Rewind/Finish Rolls</h4>
 			
 			<ul id="list">
-			
+
+				<li>Rewind Type: ' . $rewindType . '</li>
 				<li>Maximum Roll Diameter: ' . $rewindMaxRollDia . '</li>
 				<li>Maximum Rewind Weight (Per Shaft): ' . $rewindMaxRollWeight . '</li>
-				<li>Turretting Rewind: ' . $turretting . '</li>
 				<li>Constant Geometry Lay-on Rollers: ' . $layonRollers . '</li>
-				<li>Differential Shafts: ' . $differShafts . '</li>
-				<li>Bowed Roller: ' . $bowedRoller . '</li>
-				<li>Spreader Roller: ' . $spreaderRoller . '</li>
+				<li>Shaft Types: ' . $shaftType . '</li>
 				<li>Anti-static System: ' . $antiStatic . '</li>
-				<li>Maximum Machine Speed: ' . $maxMachinceSpeed . '</li>
+				<li>Maximum Machine Speed: ' . $maxMachineSpeed . '</li>
 				<li>Tension Range: ' . $rewindTensionRange . '</li>
-				<li>Laser Core Alignment: ' . $laser . '</li>
-				<li>Unloading: ' . $unLoading . '</li>
+				<li>Laser Core Alignment: ' . $computacore . '</li>
+				<li>Onwards Handling: ' . $onwardHandling . '</li>
 				<li>Core Material: ' . $rewindCoreMaterial . '</li>
 				<li>Core Size: ' . $rewindCoreSize . '</li>
 			
@@ -1669,28 +1156,47 @@
 			
 			$sectionFour = $pageBreak . $fourStandard . $unwind . $shafted . $chucks . $arms . $motor . $driven . $safety . $controls . $guiding . $splice . $trash ;
 			
-			$sectionFive = $pageBreak . $fiveStandard . $main . $bowed ;
+			$sectionFive = $pageBreak . $fiveStandard . $main ;
 			
-			$sectionSix = $sixStandard . $shear . $auto . $razor . $trimwinder . $trimblower . $tension ;
+			$sectionSix = $sixStandard . $slittingInfo1 . $slittingInfo2 . $slittingInfo3 . $auto . $trimRemoval . $slittingTension . $spreaderRollerYes ;
 			
-			$sectionSeven = $pageBreak . $sevenStandard . $duplex . $winding . $computacore . $layon . $tensionconrol . $lengthcounter . $static . $unloading . $pusher . $robot . $camera ;
+			$sectionSeven = $pageBreak . $sevenStandard . $rewind . $winding . $computacoreInfo . $layon . $tensionconrolYes . $lengthcounterYes . $static . $onwardsHanldingInfo . $pusher . $camera ;
 			
-			$sectionEight = $pageBreak . $eightStandard . $operatorControls . $remoteDiagnostics . $driveMotors . $driveType . $machineGuarding ;
+			$sectionEight = $pageBreak . $eightStandard . $machineGuarding ;
 			
 			$sectionNine = $pageBreak . '<hr id="9"/><div>
 		<h2>9. Your Machine Quotation</h2>	
 	
 	</div> <br/>
 		<div>		
-		<p id="withoutimage">Based on your specification (<a href="#3">section 3</a>),  the cost to supply a Universal X6 Slitter Rewinder is ' . $price . ' (ex-works)<br/><br/>This quote is subject to our standard terms and conditions of sale, available at <a href="http://www.universalconvertingequipment.com/terms">www.universalconvertingequipment.com/terms</a></p>
+		<p id="withoutimage">Based on your specification (<a href="#3">section 3</a>),  the cost to supply a Universal X6 Slitter Rewinder is ' . $price . ' (ex-works)<br/><br/>' . $priceAdditionalInfo . '<br/><br/>This quote is subject to our standard terms and conditions of sale, available at <a href="http://www.universalconvertingequipment.com/terms">www.universalconvertingequipment.com/terms</a></p>
 
 		
 	</div><br/>
 		<div>
 		
 			<h3>Options</h3>
-		' . $unwindOption . $shaftedOption . $chucksOption . $armsOption . $motorOption . $drivenOption . $safetyOption . $controlsOption . $guidingOption . $spliceOption . $trashOption . $mainOption . $bowedOption . $shearOption . $autoOption . $razorOption . $trimWinderOption . $trimBlowerOption . $tensionOption . $duplexOption . $windingOption . $computacoreOption . $layonOption . $tensionConrolOption . $lengthCounterOption . $staticOption . $unloadingOption . $pusherOption . $robotOption . $cameraOption . $operatorControlsOption . $remoteDiagnosticsOption . $driveMotorsOption . $driveTypeOption . $machineGuardingOption . '
-		</div>	
+		' . 
+		$unwindOption . 
+		$shaftedOption . 
+		$chucksOption . 
+		$armsOption . 
+		$motorOption . 
+		$drivenOption . 
+		$safetyOption . 
+		$controlsOption . 
+		$guidingOption . 
+		$spliceOption . 
+		$trashOption . 
+		
+		$spreaderOption . 
+	
+		$computacoreOption . 
+		$staticOption . 
+		$pusherOption . 
+		$cameraOption . 
+		
+'		</div>	
 ' ;
 
 			$sectionTen =  $pageBreak . '		<hr id="10"/>

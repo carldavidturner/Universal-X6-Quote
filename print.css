@@ -439,8 +439,6 @@ page-break-inside: avoid; /* or 'auto' */
 		clear: both;
 		margin-top: 10px;
 		display: block;
-		page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
-page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
 page-break-inside: avoid; /* or 'auto' */
 
 	}
