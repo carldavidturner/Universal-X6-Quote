@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<!-- css -->
+		
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<meta charset="UTF-8">
+		
+	</head>
+	
+	<body>
+	
+		<form id="section6" action="create.php" method="post">
+		
+			<h1>X6 Slitter Rewinder</h1>
+			<p>For help, please <a href="help.html">click here</a>.</p>
+			<table>
+			
+				<h2>General Information</h2>
+			
+				<h4>1. Details</h4>
+				
+				<p>Fill in these details for the quote to be addressed correctly.</p>
+				
+				<tr>
+				
+					<th>Description</th>
+					<th>Input</th>
+				
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Quote Number:</td>
+					<td><input type="text" class="text" name="quoteNumber" placeholder="e.g. '3307313'" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Company Name:</td>
+					<td><input type="text" class="text" name="companyName" placeholder="e.g. 'Universal'" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Company Country:</td>
+					<td><input type="text" class="text" name="companyCountry" placeholder="e.g. 'Holland'" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">For the attention of:</td>
+					<td><input type="text" class="text" name="attentionOf" placeholder="e.g. 'Carl Turner'" /></td>
+	
+				</tr>
+			
+				<tr>
+				
+					<td class="desc">Final Quote Price</td>
+					<td><input type="text" class="text" name="finalPrice" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Additional Text for Price</td>
+					<td><textarea name="priceAdditionalInfo"></textarea></td>
+				
+				</tr>
+
+				<tr>
+				
+					<td class="desc">Region</td>
+					<td>
+					
+						<select name="region">
+						
+							<option value="Europe">Europe</option>
+							<option value="USA">USA</option>
+							<option value="Other">Rest of World</option>
+						
+						</select>
+					
+					</td>
+	
+				</tr>
+			
+			</table>
+	
+			<table>
+			
+				<h2>Machine Specification</h2>
+										
+				<h4>Unwind/Master Rolls</h4>
+				
+				<tr>
+				
+					<th>Description</th>
+					<th>Options</th>				
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Unwind Type:</td>
+					<td class="selection">
+					
+					<select name="shaftedShaftless">
+					
+						<option value="Shafted">Shafted</option>
+						<option value="Shaftless">Shaftless</option>
+					
+					</select>
+					
+						<select name="seperateIntegral">
+						
+						<option value="Separate">Separate</option>
+						<option value="Integral">Integral</option>
+
+						
+						</select>
+					
+					
+						<select name="drivenBraked">
+						
+						<option value="Driven">Driven</option>
+						<option value="Braked">Braked</option>
+
+						
+						</select>
+					
+					</td>
+	
+				</tr>
+								
+				<tr>
+				
+					<td class="desc">Maximum Roll Width:</td>
+					<td class="selection"><input type="number" class="text" name="maxUnwindRollWidth" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Maximum Roll Diameter:</td>
+					<td class="selection"><input type="number" class="text" name="maxUnwindRollDia" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Minimum Web Width:</td>
+					<td class="selection"><input type="number" class="text" name="minUnwindWebWidth"  value="400mm"/></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Minimum Roll Diameter (For Floor Pickup):</td>
+					<td class="selection"><input type="number" class="text" name="minDiaFloorPickup" value="400mm"/></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Maximum Roll Weight:</td>
+					<td class="selection"><input type="number" class="text" name="maxUnwindRollWeight" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Roll Material:</td>
+					<td class="selection"><input type="text" class="text" name="rollMaterial"  /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Material Thickness:</td>
+					<td class="selection"><input type="number" class="text" name="materialThickness" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Web Guiding:</td>
+					<td class="selection"><select name="webGuiding"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="guidingPrice" placeholder="Optional Price" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Peel Off Roller:</td>
+					<td class="selection"><select name="peelOff"><option value="No">No</option><option value="Yes">Yes</option></select></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Tension Range:</td>
+					<td class="selection"><input type="text" class="text" name="unwindTensionRange" value="0.4-5N/cm (0.25-3PLI)"/></td>
+	
+				</tr>
+								<tr>
+				
+					<td class="desc">Splice Table:</td>
+					<td class="selection"><select name="spliceTable"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="splicePrice" placeholder="Optional Price" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Core Material:</td>
+					<td class="selection"><input type="text" class="text" name="unwindCoreMaterial" value="Cardboard"/></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Core Size:</td>
+					<td class="selection"><select name="unwindCoreSize"><option value="76.2mm (3 Inch)">76.2mm (3 inch)</option><option value="152.4mm (6 Inch)">152.4mm (6 Inch)</option><option value="72.6mm & 152.4mm (3 & 6 Inch)">72.6mm & 152.4mm (3 & 6 Inch)</option></select></td>
+	
+				</tr>
+			
+			</table>
+			
+			<table>
+	
+				<h4>Main Drive</h4>
+	
+				<tr>
+				
+					<td class="desc">Drive Type:</td>
+					<td class="selection"><select name="driveType"><option value="Driven S Wrap">Standard (Driven "S" Wrap)</option><option value="Nip">Nip</option></select></td>
+				</tr>
+								
+			
+			</table>
+			
+			<table>
+	
+				<h4>Slitting/Cutting</h4>
+	
+				<tr>
+				
+					<td class="desc">Slitting Type:</td>
+					<td class="selection">
+					
+					<input type="checkbox" class="radio1" name="shearYes" value="Shear" />Shear 
+					<input type="number" name="shearKnives" class="numberknives" placeholder="Number of knives">
+					<input type="number" name="shearAnvils" class="numberknives" placeholder="Number of anvils">
+					
+					
+					<input type="checkbox" class="radio1" name="razorYes" value="Razor" />Razor 
+					<input type="number" name="razorKnives" class="numberknives" placeholder="Number of razors">
+					
+					
+					<input type="checkbox" class="radio1" name="crushYes" value="Crush" />Crush 
+					<input type="number" name="crushKnives" class="numberknives" placeholder="Number of knives"></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Minimum Slit Width:</td>
+					<td class="selection"><input type="number" class="text" name="minSlitWidth" /></td>
+	
+				</tr>
+				
+				
+				<tr>
+				
+					<td class="desc">Automatic Knife Positioning:</td>
+					<td class="selection"><select name="akp"><option value="None">None</option><option value="Anvils">Anvils</option><option value="Anvils and Top Knives">Anvils and Top Knives</option></select></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Trim Removal Type:</td>
+					<td class="selection"><select name="trim"><option value="Winder">Winder</option><option value="Blower">Blower</option></select></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Spreader Roller:</td>
+					<td class="selection"><select name="spreaderRoller"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="spreaderPrice" placeholder="Otional Price"/></td>
+	
+				</tr>
+
+			
+			</table>
+			
+			<table>
+			
+				<h4>Rewind/Finish Rolls</h4>
+				
+				<tr>
+				
+					<td class="desc">Rewind Type:</td>
+					<td class="selection"><select name="rewindType"><option value="Duplex">Duplex</option><option value="Turret">Turret</option></select></td>
+	
+				</tr>
+			
+				<tr>
+				
+					<td class="desc">Shaft Type:</td>
+					<td class="selection"><select name="shaftType"><option value="Differential">Differential Shafts</option><option value="Air">Air Shafts</option></select></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">ComputaCore:</td>
+					<td class="selection"><select name="computacore"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="computaCorePrice" placeholder="Optional Price" /></td>
+
+				</tr>
+				<tr>
+				
+					<td class="desc">Lay-on Rollers:</td>
+					<td class="selection"><select name="layonRollers"><option value="Yes">Yes</option><option value="No">No</option></select></td>
+	
+				</tr>
+
+				<tr>
+				
+					<td class="desc">Maximum Roll Diameter:</td>
+					<td class="selection"><input type="text" class="text" name="maxRewindRollDia" /></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Maximum Roll Weight (Per Shaft):</td>
+					<td class="selection"><input type="text" class="text" name="maxRewindRollWeight" /></td>
+	
+				</tr>
+				
+								
+				<tr>
+
+					<td class="desc">Anti-static Systems:</td>
+					<td class="selection"><select name="antiStatic"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="antiStaticPrice" placeholder="Optional Price"/></td>
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Maximum Machine Speed:</td>
+					<td class="selection"><select name="maxMachineSpeed"><option value="600m/Minute">600m/Minute</option><option value="450m/Minute">450m/Minute</option><option value="300m/Minute">300m/Minute</option></select></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Tension Range:</td>
+					<td class="selection"><input type="text" class="text" name="rewindTensionRange" value="0.4-5N/cm (0.25-3PLI)"/></td>
+	
+				</tr>
+				
+								<tr>
+				
+					<td class="desc">Offload Pusher:</td>
+					<td class="selection"><select name="offloadPusher"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="offloadPrice" placeholder="Optional Price"/></td>
+				</tr>
+
+				<tr>
+				
+					<td class="desc">Onward Handling:</td>
+					<td class="selection"><select name="onwards"><option value="Trolley"> Trolley</option><option value="Unloading Tree">Unloading Tree</option><option value="Robot">Robot</option></select></td>
+	
+				</tr>
+				<tr>
+				
+					<td class="desc">Camera Systems:</td>
+					<td class="selection"><select name="cameras"><option value="Yes">Yes</option><option value="No">No</option><option value="Optional">Optional</option></select><input type="text" class="text" name="cameraPrice" placeholder="Optional Price"/></td>
+				</tr>
+				
+
+				<tr>
+				
+					<td class="desc">Core Material:</td>
+					<td class="selection"><input type="text" class="text" name="rewindCoreMaterial" value="Cardboard"/></td>
+	
+				</tr>
+				
+				<tr>
+				
+					<td class="desc">Core Size:</td>
+					<td class="selection"><select name="rewindCoreSize"><option value="76.2mm (3 Inch)">76.2mm (3 inch)</option><option value="152.4mm (6 Inch)">152.4mm (6 Inch)</option><option value="72.6mm & 152.4mm (3 & 6 Inch)">72.6mm & 152.4mm (3 & 6 Inch)</option></select></td>
+	
+				</tr>
+	
+			</table>
+		
+			<hr/>
+			
+			<input type="submit" value="Get Quote" />
+
+			<input type="reset" value="Clear Form" />			
+			
+		</form>
+	
+	</body>
+	
+</html>

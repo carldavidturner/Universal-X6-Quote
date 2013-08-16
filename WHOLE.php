@@ -22,7 +22,7 @@
 		
 		<?php 
 		
-		#PRE DEFINES
+		#PREDEFINES
 		
 			$knivesIncl = $null ;
 			$anvilsIncl = $null ;
@@ -67,7 +67,7 @@
 		$spliceTable = $_REQUEST['spliceTable'];
 
 		
-		if(($_REQUEST['shearYes']) == 'Shear')
+		if(isset($_POST['shearYes']) && $_POST['shearYes'] == 'Shear')
 			{
 			$slittingType1 = 'Shear, ' ;
 			$slittingInfo1 = $shear ;
@@ -82,7 +82,7 @@
 			$anvilsIncl = $null ;
 			}
 		
-		if(($_REQUEST['razorYes']) == 'Razor')
+		if(isset($_POST['razorYes']) && $_POST['razorYes'] == 'Razor')
 			{
 			$slittingType2 = 'Razor, ' ;			
 			$slittingInfo2 = $razor ;
@@ -95,7 +95,7 @@
 			$razorsIncl = $null ;
 			}
 		
-		if(($_REQUEST['crushYes']) == 'Crush')
+		if(isset($_POST['crushYes']) && $_POST['crushYes'] == 'Crush')
 			{
 			$slittingType3 = 'Crush ' ;
 			$slittingInfo3 = $crush ;
@@ -981,7 +981,6 @@
 			<li><a href="#5">5. Main Drive Details</a></li>
 			<ul id="contents">
 				<li id="contentsnolink">Main Drive</li>
-				<li id="contentsnolink">Bowed Roller</li>
 			</ul>
 			<li><a href="#6">6. Slitting</a></li>
 			<ul id="contents">
@@ -1172,9 +1171,7 @@
 		<p id="withoutimage">Based on your specification (<a href="#3">section 3</a>),  the cost to supply a Universal X6 Slitter Rewinder is ' . $price . ' (ex-works)<br/><br/>' . $priceAdditionalInfo . '<br/><br/>This quote is subject to our standard terms and conditions of sale, available at <a href="http://www.universalconvertingequipment.com/terms">www.universalconvertingequipment.com/terms</a></p>
 
 		
-	</div><br/>
-		<div>
-		
+	
 			<h3>Options</h3>
 		' . 
 		$unwindOption . 

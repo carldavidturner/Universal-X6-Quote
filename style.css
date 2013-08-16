@@ -432,6 +432,7 @@
 	}
 
 	#infoth {
+		width: 125px;
 		padding-right: 5px;
 		text-align: right;
 		font-weight: bold;
